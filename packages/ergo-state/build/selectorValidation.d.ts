@@ -1,4 +1,4 @@
-import type { StorePropertyAutoselectorKey } from './internalTypes';
+import type { StorePropertyAutoselectorKey } from './internalTypes.js';
 export declare const isInternalSelectorKey: (name: string) => boolean;
 export declare function assertStorePropertyKey(property: PropertyKey): asserts property is string;
 export declare function assertSelectorKey(selectorName: PropertyKey): asserts selectorName is string;

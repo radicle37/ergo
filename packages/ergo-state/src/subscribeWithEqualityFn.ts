@@ -1,4 +1,4 @@
-import type { ErgoStoreReadableApi } from './internalTypes';
+import type { ErgoStoreReadableApi } from './internalTypes.js';
 
 /**
  * Zustand's `useStoreWithEqualityFn`, but for non-React consumers:

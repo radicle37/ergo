@@ -1,6 +1,6 @@
-export { createErgoStore } from './createErgoVanillaStore';
-export { defineErgoStoreSelector } from './selectorDefinitions';
-export { subscribeWithEqualityFn } from './subscribeWithEqualityFn';
+export { createErgoStore } from './createErgoVanillaStore.js';
+export { defineErgoStoreSelector } from './selectorDefinitions.js';
+export { subscribeWithEqualityFn } from './subscribeWithEqualityFn.js';
 export type {
   ErgoStoreEqualityFn,
   ErgoStoreInitialStateGetter,
@@ -15,4 +15,4 @@ export type {
   ErgoVanillaStoreActionsInitializer,
   ErgoVanillaStoreActionsInitializerApi,
   ErgoVanillaStoreApi
-} from './types';
+} from './types.js';

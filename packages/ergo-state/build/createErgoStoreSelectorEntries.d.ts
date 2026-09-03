@@ -1,4 +1,4 @@
-import type { ErgoStoreAutoselectorKeys, ErgoStoreReadableApi, ErgoStoreSelectorDefinition, ErgoStoreSelectorRecord } from './internalTypes';
+import type { ErgoStoreAutoselectorKeys, ErgoStoreReadableApi, ErgoStoreSelectorDefinition, ErgoStoreSelectorRecord } from './internalTypes.js';
 interface ErgoStoreSelectorEntries<State> {
     readonly publicSelectorEntries: Record<string, ErgoStoreSelectorDefinition<State, unknown>>;
     readonly internalSelectorEntries: Record<string, ErgoStoreSelectorDefinition<State, unknown>>;

@@ -1,5 +1,5 @@
 import type { Mutate, StoreApi } from 'zustand/vanilla';
-import type { CreateErgoStoreOptions, EmptyErgoStoreMutators, ErgoStoreApiForMode, ErgoStoreAutoselectorKeys, ErgoStoreBindingMode, ErgoStoreMutators, ErgoStoreSelectorDefinition, ErgoStoreSelectorMap, ErgoStoreSelectorRecord } from './internalTypes';
+import type { CreateErgoStoreOptions, EmptyErgoStoreMutators, ErgoStoreApiForMode, ErgoStoreAutoselectorKeys, ErgoStoreBindingMode, ErgoStoreMutators, ErgoStoreSelectorDefinition, ErgoStoreSelectorMap, ErgoStoreSelectorRecord } from './internalTypes.js';
 interface CreateErgoStoreApiExtraContext<State extends object, Mutators extends ErgoStoreMutators> {
     readonly publicSelectorEntries: Record<string, ErgoStoreSelectorDefinition<State, unknown>>;
     readonly store: Mutate<StoreApi<State>, Mutators>;

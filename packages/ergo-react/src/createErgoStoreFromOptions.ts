@@ -2,7 +2,7 @@ import {
   createErgoStoreApiFromOptions,
   createSelectorMethodMap
 } from 'ergo-state/adapter-internal';
-import { createStoreHook } from './createStoreHook';
+import { createStoreHook } from './createStoreHook.js';
 
 import type {
   CreateErgoStoreFromOptions,
@@ -13,7 +13,7 @@ import type {
   ErgoStoreSelectorMap,
   ErgoStoreSelectorRecord
 } from 'ergo-state/adapter-internal';
-import type { ErgoReactStoreApi } from './reactTypes';
+import type { ErgoReactStoreApi } from './reactTypes.js';
 
 export const createErgoStoreFromOptions: CreateErgoStoreFromOptions<'react'> = <
   State extends object,

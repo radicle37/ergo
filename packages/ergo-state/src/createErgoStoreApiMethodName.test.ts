@@ -3,7 +3,7 @@ import { describe, expect, test } from 'vitest';
 import {
   createErgoStoreApiMethodName,
   createErgoStoreInternalApiMethodName
-} from './createErgoStoreApiMethodName';
+} from './createErgoStoreApiMethodName.js';
 
 describe('createErgoStoreApiMethodName', () => {
   test('prefixes public selector names and capitalizes the first selector character', () => {

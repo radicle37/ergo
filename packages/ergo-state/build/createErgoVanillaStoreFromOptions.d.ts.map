@@ -1,1 +1,1 @@
-{"version":3,"file":"createErgoVanillaStoreFromOptions.d.ts","sourceRoot":"","sources":["../src/createErgoVanillaStoreFromOptions.ts"],"names":[],"mappings":"AAEA,OAAO,KAAK,EACV,0BAA0B,EAQ3B,MAAM,iBAAiB,CAAC;AAEzB,eAAO,MAAM,iCAAiC,EAAE,0BAA0B,CAAC,SAAS,CA+BxE,CAAC"}
+{"version":3,"file":"createErgoVanillaStoreFromOptions.d.ts","sourceRoot":"","sources":["../src/createErgoVanillaStoreFromOptions.ts"],"names":[],"mappings":"AAEA,OAAO,KAAK,EACV,0BAA0B,EAQ3B,MAAM,oBAAoB,CAAC;AAE5B,eAAO,MAAM,iCAAiC,EAAE,0BAA0B,CAAC,SAAS,CA+BxE,CAAC"}

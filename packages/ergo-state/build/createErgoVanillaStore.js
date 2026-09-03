@@ -1,5 +1,5 @@
-import { createErgoStoreAutoselectorChoiceBuilder } from './createErgoStoreBuilder';
-import { createErgoVanillaStoreFromOptions } from './createErgoVanillaStoreFromOptions';
+import { createErgoStoreAutoselectorChoiceBuilder } from './createErgoStoreBuilder.js';
+import { createErgoVanillaStoreFromOptions } from './createErgoVanillaStoreFromOptions.js';
 export function createErgoStore() {
     // At runtime, `createErgoStore()` and `createErgoStore<State>()` are the same zero-argument call.
     // The overloads above hide `withMiddleware` from the no-generic type, but the returned object still

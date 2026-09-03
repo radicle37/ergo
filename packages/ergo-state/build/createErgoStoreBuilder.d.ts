@@ -1,4 +1,4 @@
-import type { CreateErgoStoreFromOptions, EmptyErgoStoreMutators, ErgoStoreAutoselectorChoiceBuilder, ErgoStoreBindingMode, ErgoStoreInitialStateGetter, ErgoStoreMiddleware, ErgoStoreMutators } from './internalTypes';
+import type { CreateErgoStoreFromOptions, EmptyErgoStoreMutators, ErgoStoreAutoselectorChoiceBuilder, ErgoStoreBindingMode, ErgoStoreInitialStateGetter, ErgoStoreMiddleware, ErgoStoreMutators } from './internalTypes.js';
 interface ErgoStoreBuilderBaseConfiguration<State extends object, InitializerMutators extends ErgoStoreMutators, StoreMutators extends ErgoStoreMutators> {
     readonly getInitialState: ErgoStoreInitialStateGetter<State, InitializerMutators>;
     readonly middleware?: ErgoStoreMiddleware<State, InitializerMutators, StoreMutators>;

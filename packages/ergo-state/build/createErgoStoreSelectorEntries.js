@@ -1,5 +1,5 @@
-import { normalizeSelectorInput } from './selectorDefinitions';
-import { assertAutoselectorKey, assertSelectorKey, assertStorePropertyKey, isInternalSelectorKey } from './selectorValidation';
+import { normalizeSelectorInput } from './selectorDefinitions.js';
+import { assertAutoselectorKey, assertSelectorKey, assertStorePropertyKey, isInternalSelectorKey } from './selectorValidation.js';
 export const createErgoStoreSelectorEntries = (store, autoselectors, selectors) => {
     const publicSelectorEntries = {};
     const internalSelectorEntries = {};

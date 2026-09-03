@@ -1,5 +1,5 @@
-import { createErgoStoreAutoselectorChoiceBuilder } from './createErgoStoreBuilder';
-import { createErgoVanillaStoreFromOptions } from './createErgoVanillaStoreFromOptions';
+import { createErgoStoreAutoselectorChoiceBuilder } from './createErgoStoreBuilder.js';
+import { createErgoVanillaStoreFromOptions } from './createErgoVanillaStoreFromOptions.js';
 
 import type {
   ErgoStoreInitialStateGetter,
@@ -8,7 +8,7 @@ import type {
   ErgoVanillaStoreInitialBuilder,
   ErgoVanillaStoreInitialBuilderWithActions,
   ErgoVanillaStoreStateInferredInitialBuilder
-} from './internalTypes';
+} from './internalTypes.js';
 
 /**
  * Creates a small, typed facade around a vanilla Zustand store without generated React hooks.

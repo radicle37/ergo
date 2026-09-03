@@ -1,4 +1,4 @@
-import { createErgoStoreApiMethodName } from './createErgoStoreApiMethodName';
+import { createErgoStoreApiMethodName } from './createErgoStoreApiMethodName.js';
 export const createSelectorMethodMap = (prefix, selectorEntries, createMethod, createMethodName = createErgoStoreApiMethodName) => {
     // Runtime object construction cannot preserve the mapped type from types.ts, so callers cast the
     // result to the specific getter/hook/subscriber map after choosing the prefix.

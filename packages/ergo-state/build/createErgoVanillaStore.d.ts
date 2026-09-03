@@ -1,4 +1,4 @@
-import type { ErgoVanillaStoreInitialBuilder, ErgoVanillaStoreInitialBuilderWithActions, ErgoVanillaStoreStateInferredInitialBuilder } from './internalTypes';
+import type { ErgoVanillaStoreInitialBuilder, ErgoVanillaStoreInitialBuilderWithActions, ErgoVanillaStoreStateInferredInitialBuilder } from './internalTypes.js';
 /**
  * Creates a small, typed facade around a vanilla Zustand store without generated React hooks.
  *

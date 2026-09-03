@@ -5,7 +5,7 @@ import { devtools, persist } from 'zustand/middleware';
 import type { PersistStorage } from 'zustand/middleware';
 import { immer } from 'zustand/middleware/immer';
 
-import { createErgoStore, defineErgoStoreSelector } from './index';
+import { createErgoStore, defineErgoStoreSelector } from './index.js';
 
 interface TestInternalState {
   count: number;

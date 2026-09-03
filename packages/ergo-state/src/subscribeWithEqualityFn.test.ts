@@ -1,6 +1,6 @@
 import { createStore } from 'zustand';
 import { describe, expect, test, vi } from 'vitest';
-import { subscribeWithEqualityFn } from './subscribeWithEqualityFn';
+import { subscribeWithEqualityFn } from './subscribeWithEqualityFn.js';
 
 interface TestState {
   count: number;

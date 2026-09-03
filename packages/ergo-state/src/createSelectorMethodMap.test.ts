@@ -1,6 +1,6 @@
 import { describe, expect, test, vi } from 'vitest';
 
-import { createSelectorMethodMap } from './createSelectorMethodMap';
+import { createSelectorMethodMap } from './createSelectorMethodMap.js';
 
 interface TestState {
   count: number;

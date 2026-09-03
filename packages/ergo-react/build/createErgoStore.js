@@ -1,5 +1,5 @@
 import { createErgoStoreAutoselectorChoiceBuilder } from 'ergo-state/adapter-internal';
-import { createErgoStoreFromOptions } from './createErgoStoreFromOptions';
+import { createErgoStoreFromOptions } from './createErgoStoreFromOptions.js';
 export { defineErgoStoreSelector } from 'ergo-state';
 export function createErgoStore() {
     // At runtime, `createErgoStore()` and `createErgoStore<State>()` are the same zero-argument call.

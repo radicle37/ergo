@@ -2,7 +2,7 @@ import type {
   ErgoStoreEqualityFn,
   ErgoStoreSelectorDefinition,
   ErgoStoreSelectorInput
-} from './types';
+} from './types.js';
 
 export const defineErgoStoreSelector = <State, Selected>(
   select: (state: State) => Selected,

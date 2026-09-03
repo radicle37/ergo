@@ -2,10 +2,10 @@ import { createStore } from 'zustand/vanilla';
 
 import type { Mutate, StateCreator, StoreApi } from 'zustand/vanilla';
 
-import { createErgoStoreInternalApiMethodName } from './createErgoStoreApiMethodName';
-import { createErgoStoreSelectorEntries } from './createErgoStoreSelectorEntries';
-import { createSelectorMethodMap } from './createSelectorMethodMap';
-import { subscribeWithEqualityFn } from './subscribeWithEqualityFn';
+import { createErgoStoreInternalApiMethodName } from './createErgoStoreApiMethodName.js';
+import { createErgoStoreSelectorEntries } from './createErgoStoreSelectorEntries.js';
+import { createSelectorMethodMap } from './createSelectorMethodMap.js';
+import { subscribeWithEqualityFn } from './subscribeWithEqualityFn.js';
 
 import type {
   CreateErgoStoreOptions,
@@ -23,7 +23,7 @@ import type {
   StoreGetterMap,
   StoreInternalGetterMap,
   StoreSubscriberMap
-} from './internalTypes';
+} from './internalTypes.js';
 
 const zustandStoreApiKeys = new Set<PropertyKey>([
   'getInitialState',

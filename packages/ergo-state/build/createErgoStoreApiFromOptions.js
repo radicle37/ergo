@@ -1,8 +1,8 @@
 import { createStore } from 'zustand/vanilla';
-import { createErgoStoreInternalApiMethodName } from './createErgoStoreApiMethodName';
-import { createErgoStoreSelectorEntries } from './createErgoStoreSelectorEntries';
-import { createSelectorMethodMap } from './createSelectorMethodMap';
-import { subscribeWithEqualityFn } from './subscribeWithEqualityFn';
+import { createErgoStoreInternalApiMethodName } from './createErgoStoreApiMethodName.js';
+import { createErgoStoreSelectorEntries } from './createErgoStoreSelectorEntries.js';
+import { createSelectorMethodMap } from './createSelectorMethodMap.js';
+import { subscribeWithEqualityFn } from './subscribeWithEqualityFn.js';
 const zustandStoreApiKeys = new Set([
     'getInitialState',
     'getState',

@@ -3,7 +3,7 @@ import { act, render, screen } from '@testing-library/react';
 import { shallow } from 'zustand/vanilla/shallow';
 import { describe, expect, expectTypeOf, test, vi } from 'vitest';
 
-import { createErgoStore, defineErgoStoreSelector } from './createErgoStore';
+import { createErgoStore, defineErgoStoreSelector } from './createErgoStore.js';
 
 const isEqual = (left: unknown, right: unknown) => JSON.stringify(left) === JSON.stringify(right);
 const equals = isEqual;

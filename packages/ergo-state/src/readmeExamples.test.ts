@@ -1,6 +1,6 @@
 import { describe, expect, expectTypeOf, test, vi } from 'vitest';
 
-import { createErgoStore } from './index';
+import { createErgoStore } from './index.js';
 
 describe('documentation examples', () => {
   test('README vanilla consumers example exposes hookless getters and subscribers', () => {

@@ -14,4 +14,4 @@ export type {
   ErgoVanillaStoreActionsInitializer,
   ErgoVanillaStoreActionsInitializerApi,
   ErgoVanillaStoreApi
-} from './internalTypes';
+} from './internalTypes.js';

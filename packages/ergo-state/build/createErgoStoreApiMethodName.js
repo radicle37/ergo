@@ -1,4 +1,4 @@
-import { assertInternalSelectorKey, assertPublicSelectorKey } from './selectorValidation';
+import { assertInternalSelectorKey, assertPublicSelectorKey } from './selectorValidation.js';
 export const createErgoStoreApiMethodName = (prefix, selectorName) => {
     assertPublicSelectorKey(selectorName);
     return `${prefix}${selectorName.charAt(0).toUpperCase()}${selectorName.slice(1)}`;

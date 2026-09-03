@@ -1,5 +1,5 @@
 import { createErgoStoreAutoselectorChoiceBuilder } from 'ergo-state/adapter-internal';
-import { createErgoStoreFromOptions } from './createErgoStoreFromOptions';
+import { createErgoStoreFromOptions } from './createErgoStoreFromOptions.js';
 
 import type {
   ErgoStoreInitialStateGetter,
@@ -10,7 +10,7 @@ import type {
   ErgoReactStoreInitialBuilder,
   ErgoReactStoreInitialBuilderWithActions,
   ErgoReactStoreStateInferredInitialBuilder
-} from './reactTypes';
+} from './reactTypes.js';
 
 export { defineErgoStoreSelector } from 'ergo-state';
 export type {
@@ -26,7 +26,7 @@ export type {
   ErgoReactStoreActionsInitializer,
   ErgoReactStoreActionsInitializerApi,
   ErgoReactStoreApi
-} from './reactTypes';
+} from './reactTypes.js';
 
 /**
  * Creates a small, typed facade around a vanilla Zustand store.

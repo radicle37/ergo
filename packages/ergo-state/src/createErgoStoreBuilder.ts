@@ -14,7 +14,7 @@ import type {
   ErgoStoreSelectorChoiceResult,
   ErgoStoreSelectorRecord,
   InferredErgoStoreActionsInitializerForMode
-} from './internalTypes';
+} from './internalTypes.js';
 
 interface ErgoStoreBuilderBaseConfiguration<
   State extends object,

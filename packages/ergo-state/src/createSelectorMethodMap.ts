@@ -1,6 +1,6 @@
-import { createErgoStoreApiMethodName } from './createErgoStoreApiMethodName';
+import { createErgoStoreApiMethodName } from './createErgoStoreApiMethodName.js';
 
-import type { ErgoStoreSelectorDefinition } from './types';
+import type { ErgoStoreSelectorDefinition } from './types.js';
 
 export const createSelectorMethodMap = <State>(
   prefix: string,

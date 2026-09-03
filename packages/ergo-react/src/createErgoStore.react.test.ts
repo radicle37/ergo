@@ -2,7 +2,7 @@ import { createElement } from 'react';
 import { act, fireEvent, render, screen } from '@testing-library/react';
 import { describe, expect, test, vi } from 'vitest';
 
-import { createErgoStore, defineErgoStoreSelector } from './index';
+import { createErgoStore, defineErgoStoreSelector } from './index.js';
 
 interface HookState {
   count: number;

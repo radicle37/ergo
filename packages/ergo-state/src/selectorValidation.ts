@@ -1,4 +1,4 @@
-import type { StorePropertyAutoselectorKey } from './internalTypes';
+import type { StorePropertyAutoselectorKey } from './internalTypes.js';
 
 const startsWithLowercaseAsciiLetter = (value: string) => {
   const firstCharacterCode = value.charCodeAt(0);

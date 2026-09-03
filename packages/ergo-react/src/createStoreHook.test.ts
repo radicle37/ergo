@@ -14,7 +14,7 @@ interface TestState {
 
 describe('createStoreHook', () => {
   test('creates a hook that reads through useStoreWithEqualityFn with Object.is by default', async () => {
-    const { createStoreHook } = await import('./createStoreHook');
+    const { createStoreHook } = await import('./createStoreHook.js');
     const store = {} as StoreApi<TestState>;
     const selector = (state: TestState) => state.count;
 
@@ -27,7 +27,7 @@ describe('createStoreHook', () => {
   });
 
   test('creates a hook that forwards a custom equality function', async () => {
-    const { createStoreHook } = await import('./createStoreHook');
+    const { createStoreHook } = await import('./createStoreHook.js');
     const store = {} as StoreApi<TestState>;
     const selector = (state: TestState) => ({ count: state.count });
     const equalityFn = (left: { count: number }, right: { count: number }) =>
@@ -42,7 +42,7 @@ describe('createStoreHook', () => {
   });
 
   test('names the returned hook after the provided hookName for React DevTools', async () => {
-    const { createStoreHook } = await import('./createStoreHook');
+    const { createStoreHook } = await import('./createStoreHook.js');
     const store = {} as StoreApi<TestState>;
     const selector = (state: TestState) => state.count;
 

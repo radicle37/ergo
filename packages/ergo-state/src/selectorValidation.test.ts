@@ -5,7 +5,7 @@ import {
   assertSelectorKey,
   assertStorePropertyKey,
   isInternalSelectorKey
-} from './selectorValidation';
+} from './selectorValidation.js';
 
 describe('isInternalSelectorKey', () => {
   test('accepts underscore-prefixed names whose first public character is lowercase ascii', () => {

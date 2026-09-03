@@ -1,8 +1,8 @@
-export { createErgoStoreAutoselectorChoiceBuilder } from './createErgoStoreBuilder';
-export { createErgoStoreApiFromOptions } from './createErgoStoreApiFromOptions';
-export { createErgoStoreApiMethodName } from './createErgoStoreApiMethodName';
-export { createSelectorMethodMap } from './createSelectorMethodMap';
-export { defineErgoStoreSelector } from './selectorDefinitions';
+export { createErgoStoreAutoselectorChoiceBuilder } from './createErgoStoreBuilder.js';
+export { createErgoStoreApiFromOptions } from './createErgoStoreApiFromOptions.js';
+export { createErgoStoreApiMethodName } from './createErgoStoreApiMethodName.js';
+export { createSelectorMethodMap } from './createSelectorMethodMap.js';
+export { defineErgoStoreSelector } from './selectorDefinitions.js';
 export type {
   CreateErgoStoreFromOptions,
   CreateErgoStoreOptions,
@@ -37,4 +37,4 @@ export type {
   ErgoStoreSelectorInput,
   ErgoStoreStateInferredInitialBuilder,
   InferredErgoStoreActionsInitializerForMode
-} from './internalTypes';
+} from './internalTypes.js';

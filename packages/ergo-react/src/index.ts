@@ -1,1 +1,1 @@
-export * from './createErgoStore';
+export * from './createErgoStore.js';

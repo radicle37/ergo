@@ -1,8 +1,8 @@
 import { createStore } from 'zustand';
 import { describe, expect, test, vi } from 'vitest';
 
-import { createErgoStoreSelectorEntries } from './createErgoStoreSelectorEntries';
-import { defineErgoStoreSelector } from './selectorDefinitions';
+import { createErgoStoreSelectorEntries } from './createErgoStoreSelectorEntries.js';
+import { defineErgoStoreSelector } from './selectorDefinitions.js';
 
 interface TestState {
   count: number;

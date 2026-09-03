@@ -1,4 +1,4 @@
-import { createErgoStoreApiFromOptions } from './createErgoStoreApiFromOptions';
+import { createErgoStoreApiFromOptions } from './createErgoStoreApiFromOptions.js';
 
 import type {
   CreateErgoStoreFromOptions,
@@ -9,7 +9,7 @@ import type {
   ErgoStoreSelectorMap,
   ErgoStoreSelectorRecord,
   ErgoVanillaStoreApi
-} from './internalTypes';
+} from './internalTypes.js';
 
 export const createErgoVanillaStoreFromOptions: CreateErgoStoreFromOptions<'vanilla'> = <
   State extends object,

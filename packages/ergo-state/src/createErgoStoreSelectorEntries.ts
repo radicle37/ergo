@@ -1,10 +1,10 @@
-import { normalizeSelectorInput } from './selectorDefinitions';
+import { normalizeSelectorInput } from './selectorDefinitions.js';
 import {
   assertAutoselectorKey,
   assertSelectorKey,
   assertStorePropertyKey,
   isInternalSelectorKey
-} from './selectorValidation';
+} from './selectorValidation.js';
 
 import type {
   ErgoStoreAutoselectorKeys,
@@ -12,7 +12,7 @@ import type {
   ErgoStoreSelectorDefinition,
   ErgoStoreSelectorInput,
   ErgoStoreSelectorRecord
-} from './internalTypes';
+} from './internalTypes.js';
 
 interface ErgoStoreSelectorEntries<State> {
   readonly publicSelectorEntries: Record<string, ErgoStoreSelectorDefinition<State, unknown>>;

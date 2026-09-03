@@ -1,6 +1,6 @@
 import { describe, expect, test, vi } from 'vitest';
 
-import { defineErgoStoreSelector, normalizeSelectorInput } from './selectorDefinitions';
+import { defineErgoStoreSelector, normalizeSelectorInput } from './selectorDefinitions.js';
 
 describe('defineErgoStoreSelector', () => {
   test('keeps the selector and optional equality function together', () => {
