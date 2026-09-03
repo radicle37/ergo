@@ -1,0 +1,31 @@
+{
+  "compilerOptions": {
+    "noImplicitAny": true,
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "ES2023"
+    ],
+    "outDir": "build",
+    "allowJs": true,
+    "skipLibCheck": true,
+    "types": [],
+    "strict": true,
+    "noUncheckedSideEffectImports": true,
+    "libReplacement": false,
+    "forceConsistentCasingInFileNames": true,
+    "target": "ES2023",
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "resolvePackageJsonExports": true,
+    "moduleDetection": "force",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "composite": true,
+    "incremental": true,
+    "jsx": "react",
+    "noFallthroughCasesInSwitch": true,
+    "useUnknownInCatchVariables": false,
+    "experimentalDecorators": false
+  }
+}

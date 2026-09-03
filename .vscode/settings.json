@@ -1,0 +1,9 @@
+{
+  "typescript.preferences.includePackageJsonAutoImports": "on",
+  "typescript.tsdk": "node_modules/.pnpm/typescript@6.0.3/node_modules/typescript/lib",
+  "typescript.enablePromptUseWorkspaceTsdk": true,
+  "js/ts.tsdk.path": "node_modules/.pnpm/typescript@6.0.3/node_modules/typescript/lib",
+  "cSpell.words": [
+    "autoselectors"
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "$schema": "https://turborepo.com/schema.v2.json",
+  "tasks": {
+    "build": {
+      "dependsOn": ["^build"],
+      "outputs": ["build/**"]
+    },
+    "dev": {
+      "dependsOn": ["^build"],
+      "cache": false,
+      "persistent": true
+    },
+    "test": {
+      "dependsOn": ["^build"],
+      "outputs": []
+    },
+    "typecheck": {
+      "dependsOn": ["^build"],
+      "outputs": []
+    }
+  },
+  "globalDependencies": [".npmrc", "pnpm-lock.yaml"],
+  "globalEnv": ["GENERATE_SOURCEMAP", "VERSION", "VITE_*"]
+}

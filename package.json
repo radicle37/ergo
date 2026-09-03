@@ -1,0 +1,56 @@
+{
+  "name": "root",
+  "private": true,
+  "type": "module",
+  "description": "Ergo monorepo: framework-agnostic Zustand-based store builder and its React adapter.",
+  "license": "MIT",
+  "author": "radicle37",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/radicle37/ergo.git"
+  },
+  "homepage": "https://github.com/radicle37/ergo#readme",
+  "bugs": {
+    "url": "https://github.com/radicle37/ergo/issues"
+  },
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "build": "turbo run build",
+    "clean": "node scripts/clean.mjs",
+    "dev": "turbo run dev",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "test": "turbo run test",
+    "typecheck": "turbo run typecheck",
+    "changeset": "changeset",
+    "changeset:version": "changeset version",
+    "changeset:publish": "changeset publish"
+  },
+  "devDependencies": {
+    "@changesets/cli": "^2.27.9",
+    "@emnapi/core": "^1.11.3",
+    "@emnapi/runtime": "^1.11.3",
+    "@types/node": "24.13.3",
+    "@typescript/native": "npm:typescript@7.0.2",
+    "eslint": "^9.39.5",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-prettier": "^5.5.6",
+    "globals": "^17.11.0",
+    "happy-dom": "20.12.0",
+    "knip": "^6.33.0",
+    "prettier": "^3.9.6",
+    "turbo": "^2.10.12",
+    "typescript": "npm:@typescript/typescript6@6.0.2",
+    "typescript-eslint": "^8.68.0"
+  },
+  "optionalDependencies": {
+    "@rollup/rollup-linux-x64-gnu": "*"
+  },
+  "packageManager": "pnpm@11.25.0",
+  "engines": {
+    "node": "24.20.0",
+    "pnpm": "11.25.0"
+  }
+}

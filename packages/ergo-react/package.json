@@ -1,0 +1,76 @@
+{
+  "name": "ergo-react",
+  "version": "0.1.0",
+  "description": "React adapter for ergo — generated use<Name>() hooks for selector-driven render paths.",
+  "keywords": [
+    "ergo",
+    "react",
+    "zustand",
+    "state-management",
+    "hooks",
+    "selectors",
+    "typescript"
+  ],
+  "license": "MIT",
+  "author": "radicle37",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/radicle37/ergo.git",
+    "directory": "packages/ergo-react"
+  },
+  "homepage": "https://github.com/radicle37/ergo/tree/main/packages/ergo-react#readme",
+  "bugs": {
+    "url": "https://github.com/radicle37/ergo/issues"
+  },
+  "sideEffects": false,
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./build/index.d.ts",
+      "default": "./build/index.js"
+    }
+  },
+  "main": "build/index.js",
+  "types": "build/index.d.ts",
+  "files": [
+    "build",
+    "docs",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "build": "tsc --build",
+    "dev": "tsc --build --watch",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "typecheck": "tsc -p tsconfig.build.json --noEmit && tsc -p tsconfig.test.json --noEmit"
+  },
+  "dependencies": {
+    "ergo": "workspace:*"
+  },
+  "devDependencies": {
+    "@testing-library/dom": "^10.4.1",
+    "@testing-library/jest-dom": "^7.0.1",
+    "@testing-library/react": "^16.3.3",
+    "@types/react": "^18.3.28",
+    "@types/react-dom": "^18.3.7",
+    "@typescript/native": "npm:typescript@7.0.2",
+    "immer": "^11.1.3",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "typescript": "npm:@typescript/typescript6@6.0.2",
+    "use-sync-external-store": "^1.5.0",
+    "vite": "^8.2.2",
+    "vitest": "^4.1.11",
+    "zustand": "^5.0.15"
+  },
+  "peerDependencies": {
+    "react": ">=18.0.0 < 20",
+    "use-sync-external-store": ">=1.2.0",
+    "zustand": "^5.0.15"
+  },
+  "publishConfig": {
+    "access": "public",
+    "provenance": true
+  }
+}

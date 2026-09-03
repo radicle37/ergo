@@ -1,0 +1,24 @@
+{
+  "$schema": "https://unpkg.com/knip@5/schema.json",
+  "ignoreExportsUsedInFile": {
+    "interface": true,
+    "type": true
+  },
+  "rules": {
+    "enumMembers": "off"
+  },
+  "ignoreDependencies": ["@emnapi/core", "@emnapi/runtime"],
+  "tags": ["-lintignore"],
+  "workspaces": {
+    "packages/ergo": {
+      "project": ["src/**/*.ts"]
+    },
+    "packages/ergo-react": {
+      "project": ["src/**/*.{ts,tsx}"]
+    },
+    "packages/ergo-public-api-check": {
+      "entry": ["src/**/*.ts"],
+      "project": ["src/**/*.ts"]
+    }
+  }
+}

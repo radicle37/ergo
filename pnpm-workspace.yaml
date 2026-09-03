@@ -1,0 +1,9 @@
+packages:
+  - 'packages/*'
+
+autoInstallPeers: false
+linkWorkspacePackages: true
+networkConcurrency: 8
+strictPeerDependencies: true
+engineStrict: true
+pmOnFail: error
