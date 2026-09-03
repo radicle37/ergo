@@ -1,5 +1,13 @@
 # ergo-react
 
+## 0.1.2
+
+### Patch Changes
+
+- 0938d43: Emit Node-compatible ESM by using explicit `.js` extensions for package-local imports and exports.
+- Updated dependencies [0938d43]
+  - ergo-state@0.1.1
+
 ## 0.1.1
 
 ### Patch Changes

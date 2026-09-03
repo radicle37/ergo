@@ -1,6 +1,6 @@
 {
   "name": "ergo-state",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Framework-agnostic store builder generating typed getters, subscribers, and actions on top of Zustand.",
   "keywords": [
     "ergo",
