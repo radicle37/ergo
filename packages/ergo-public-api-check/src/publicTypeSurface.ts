@@ -9,8 +9,8 @@ import type {
   ErgoStoreMutators,
   ErgoStoreSelectorDefinition,
   ErgoStoreSelectorInput
-} from 'ergo';
-import type * as RootErgo from 'ergo';
+} from 'ergo-state';
+import type * as RootErgo from 'ergo-state';
 import type {
   ErgoReactStoreActionsInitializer,
   ErgoReactStoreActionsInitializerApi,

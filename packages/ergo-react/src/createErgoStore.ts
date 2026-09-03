@@ -1,14 +1,18 @@
-import { createErgoStoreAutoselectorChoiceBuilder } from 'ergo/adapter-internal';
+import { createErgoStoreAutoselectorChoiceBuilder } from 'ergo-state/adapter-internal';
 import { createErgoStoreFromOptions } from './createErgoStoreFromOptions';
 
-import type { ErgoStoreInitialStateGetter, ErgoStoreMiddleware, ErgoStoreMutators } from 'ergo';
+import type {
+  ErgoStoreInitialStateGetter,
+  ErgoStoreMiddleware,
+  ErgoStoreMutators
+} from 'ergo-state';
 import type {
   ErgoReactStoreInitialBuilder,
   ErgoReactStoreInitialBuilderWithActions,
   ErgoReactStoreStateInferredInitialBuilder
 } from './reactTypes';
 
-export { defineErgoStoreSelector } from 'ergo';
+export { defineErgoStoreSelector } from 'ergo-state';
 export type {
   ErgoStoreEqualityFn,
   ErgoStoreInitialStateGetter,
@@ -17,7 +21,7 @@ export type {
   ErgoStoreSelectorDefinition,
   ErgoStoreSelectorInput,
   ErgoStoreMutators
-} from 'ergo';
+} from 'ergo-state';
 export type {
   ErgoReactStoreActionsInitializer,
   ErgoReactStoreActionsInitializerApi,

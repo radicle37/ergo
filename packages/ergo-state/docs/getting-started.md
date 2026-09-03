@@ -7,7 +7,7 @@ Ergo creates a store internally and returns a typed facade. That facade is the s
 ## Store Shape
 
 ```ts
-import { createErgoStore } from 'ergo';
+import { createErgoStore } from 'ergo-state';
 
 interface CounterState {
   count: number;

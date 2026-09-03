@@ -18,7 +18,7 @@ import type {
   ErgoStoreSelectorRecord,
   ErgoStoreStateInferredInitialBuilder,
   InferredErgoStoreActionsInitializerForMode
-} from 'ergo/adapter-internal';
+} from 'ergo-state/adapter-internal';
 
 export type ErgoReactStoreApi<
   State,

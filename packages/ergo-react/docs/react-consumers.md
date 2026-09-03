@@ -92,6 +92,6 @@ For larger stores, prefer separate barrels such as `hooks.ts`, `actions.ts`, and
 
 ## Related Pages
 
-- [Ergo Getting Started](../../ergo/docs/getting-started.md)
-- [Ergo Selectors And Actions](../../ergo/docs/selectors-and-actions.md)
-- [Ergo State Surface](../../ergo/docs/state-surface.md)
+- [Ergo Getting Started](../../ergo-state/docs/getting-started.md)
+- [Ergo Selectors And Actions](../../ergo-state/docs/selectors-and-actions.md)
+- [Ergo State Surface](../../ergo-state/docs/state-surface.md)

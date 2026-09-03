@@ -10,7 +10,7 @@
   "ignoreDependencies": ["@emnapi/core", "@emnapi/runtime"],
   "tags": ["-lintignore"],
   "workspaces": {
-    "packages/ergo": {
+    "packages/ergo-state": {
       "project": ["src/**/*.ts"]
     },
     "packages/ergo-react": {

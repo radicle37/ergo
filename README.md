@@ -8,27 +8,27 @@ The package READMEs are the source of truth for consumer-facing usage. This root
 
 | Package | Purpose | Docs |
 | --- | --- | --- |
-| `ergo` | Framework-agnostic store builder and generated getters/subscribers/actions around Zustand. | [README](./packages/ergo/README.md), [development notes](./packages/ergo/DEVELOPMENT.md) |
-| `ergo-react` | React adapter for `ergo`, adding generated `use<Name>()` hooks for selector-driven render paths. | [README](./packages/ergo-react/README.md), [development notes](./packages/ergo-react/DEVELOPMENT.md) |
-| `ergo-public-api-check` | Compile-only package-boundary checks for the public declaration surface of `ergo` and `ergo-react`. | [README](./packages/ergo-public-api-check/README.md) |
+| `ergo-state` | Framework-agnostic store builder and generated getters/subscribers/actions around Zustand. | [README](./packages/ergo-state/README.md), [development notes](./packages/ergo-state/DEVELOPMENT.md) |
+| `ergo-react` | React adapter for `ergo-state`, adding generated `use<Name>()` hooks for selector-driven render paths. | [README](./packages/ergo-react/README.md), [development notes](./packages/ergo-react/DEVELOPMENT.md) |
+| `ergo-public-api-check` | Compile-only package-boundary checks for the public declaration surface of `ergo-state` and `ergo-react`. | [README](./packages/ergo-public-api-check/README.md) |
 
 ## Documentation Map
 
 Start with the package README that matches what you are working on:
 
-- [Ergo README](./packages/ergo/README.md) for the core builder, selectors, actions, middleware, and vanilla usage.
+- [Ergo README](./packages/ergo-state/README.md) for the core builder, selectors, actions, middleware, and vanilla usage.
 - [Ergo React README](./packages/ergo-react/README.md) for React-specific hook generation and consumption.
 - [Public API Check README](./packages/ergo-public-api-check/README.md) for package-boundary type coverage.
 
-Additional core Ergo guides live under [packages/ergo/docs](./packages/ergo/docs):
+Additional core Ergo guides live under [packages/ergo-state/docs](./packages/ergo-state/docs):
 
-- [Getting Started](./packages/ergo/docs/getting-started.md)
-- [Store Factories](./packages/ergo/docs/store-factories.md)
-- [Selectors And Actions](./packages/ergo/docs/selectors-and-actions.md)
-- [State Surface](./packages/ergo/docs/state-surface.md)
-- [Equality](./packages/ergo/docs/equality.md)
-- [Zustand And Middleware](./packages/ergo/docs/zustand-and-middleware.md)
-- [FAQ](./packages/ergo/docs/faq.md)
+- [Getting Started](./packages/ergo-state/docs/getting-started.md)
+- [Store Factories](./packages/ergo-state/docs/store-factories.md)
+- [Selectors And Actions](./packages/ergo-state/docs/selectors-and-actions.md)
+- [State Surface](./packages/ergo-state/docs/state-surface.md)
+- [Equality](./packages/ergo-state/docs/equality.md)
+- [Zustand And Middleware](./packages/ergo-state/docs/zustand-and-middleware.md)
+- [FAQ](./packages/ergo-state/docs/faq.md)
 
 React-specific guidance lives in [React Consumers](./packages/ergo-react/docs/react-consumers.md).
 
@@ -57,7 +57,7 @@ pnpm lint
 Useful package-scoped examples:
 
 ```sh
-pnpm --filter ergo test
+pnpm --filter ergo-state test
 pnpm --filter ergo-react test
 pnpm --filter ergo-public-api-check typecheck
 ```

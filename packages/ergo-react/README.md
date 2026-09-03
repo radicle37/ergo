@@ -1,8 +1,8 @@
 # Ergo React
 
-`ergo-react` is the React adapter for `ergo`. It uses the same store builder and facade conventions as Ergo, then adds generated `use<Name>()` hooks for selectors and autoselectors.
+`ergo-react` is the React adapter for `ergo-state`. It uses the same store builder and facade conventions as Ergo, then adds generated `use<Name>()` hooks for selectors and autoselectors.
 
-Use this package when a store is consumed from React render paths. Use `ergo` directly when a store only needs getters, subscribers, actions, middleware APIs, and full-state `get` / `set`.
+Use this package when a store is consumed from React render paths. Use `ergo-state` directly when a store only needs getters, subscribers, actions, middleware APIs, and full-state `get` / `set`.
 
 ## Installation And Peer Dependencies
 
@@ -10,7 +10,7 @@ Use this package when a store is consumed from React render paths. Use `ergo` di
 pnpm add ergo-react zustand react use-sync-external-store
 ```
 
-`ergo-react` depends on the base Ergo package and has React-specific peer dependencies: `react`, `use-sync-external-store`, and `zustand`.
+`ergo-react` depends on the base `ergo-state` package and has React-specific peer dependencies: `react`, `use-sync-external-store`, and `zustand`.
 
 The React integration is built and tested for Single Page Applications using React 18+. Server-side rendering and hydration compatibility are not part of the supported scope. They may work in some setups, but they are not a compatibility target and should be validated by the consuming application.
 

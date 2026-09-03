@@ -1,9 +1,10 @@
 {
-  "name": "ergo",
+  "name": "ergo-state",
   "version": "0.1.0",
   "description": "Framework-agnostic store builder generating typed getters, subscribers, and actions on top of Zustand.",
   "keywords": [
     "ergo",
+    "ergo-state",
     "zustand",
     "state-management",
     "store",
@@ -16,9 +17,9 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/radicle37/ergo.git",
-    "directory": "packages/ergo"
+    "directory": "packages/ergo-state"
   },
-  "homepage": "https://github.com/radicle37/ergo/tree/main/packages/ergo#readme",
+  "homepage": "https://github.com/radicle37/ergo/tree/main/packages/ergo-state#readme",
   "bugs": {
     "url": "https://github.com/radicle37/ergo/issues"
   },

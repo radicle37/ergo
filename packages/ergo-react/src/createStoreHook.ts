@@ -1,6 +1,6 @@
 import { useStoreWithEqualityFn } from 'zustand/traditional';
 
-import type { ErgoStoreEqualityFn, ErgoStoreReadableApi } from 'ergo/adapter-internal';
+import type { ErgoStoreEqualityFn, ErgoStoreReadableApi } from 'ergo-state/adapter-internal';
 
 export const createStoreHook = <State extends object, Selected>(
   store: ErgoStoreReadableApi<State>,

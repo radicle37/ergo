@@ -8,7 +8,7 @@
   "include": ["src"],
   "references": [
     {
-      "path": "../ergo/tsconfig.build.json"
+      "path": "../ergo-state/tsconfig.build.json"
     },
     {
       "path": "../ergo-react/tsconfig.build.json"

@@ -18,7 +18,7 @@ Common cases:
 Put the full `createErgoStore` chain inside a function. Each call creates a new underlying store, new generated subscribers, and a new `actions` object.
 
 ```ts
-import { createErgoStore } from 'ergo';
+import { createErgoStore } from 'ergo-state';
 
 interface CounterState {
   count: number;

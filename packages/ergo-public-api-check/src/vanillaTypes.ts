@@ -1,7 +1,7 @@
 import type { Mutate, StoreApi } from 'zustand/vanilla';
 import { immer } from 'zustand/middleware/immer';
 
-import { createErgoStore, defineErgoStoreSelector } from 'ergo';
+import { createErgoStore, defineErgoStoreSelector } from 'ergo-state';
 
 interface CounterState {
   label: string;

@@ -1,6 +1,6 @@
 import type { ErgoReactStoreInitialBuilder, ErgoReactStoreInitialBuilderWithActions, ErgoReactStoreStateInferredInitialBuilder } from './reactTypes';
-export { defineErgoStoreSelector } from 'ergo';
-export type { ErgoStoreEqualityFn, ErgoStoreInitialStateGetter, ErgoStoreMiddleware, ErgoStoreMiddlewareApi, ErgoStoreSelectorDefinition, ErgoStoreSelectorInput, ErgoStoreMutators } from 'ergo';
+export { defineErgoStoreSelector } from 'ergo-state';
+export type { ErgoStoreEqualityFn, ErgoStoreInitialStateGetter, ErgoStoreMiddleware, ErgoStoreMiddlewareApi, ErgoStoreSelectorDefinition, ErgoStoreSelectorInput, ErgoStoreMutators } from 'ergo-state';
 export type { ErgoReactStoreActionsInitializer, ErgoReactStoreActionsInitializerApi, ErgoReactStoreApi } from './reactTypes';
 /**
  * Creates a small, typed facade around a vanilla Zustand store.

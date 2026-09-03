@@ -1,12 +1,12 @@
 # Ergo
 
-`ergo` is a small, opinionated state-management solution for TypeScript codebases.
+`ergo-state` is a small, opinionated state-management solution for TypeScript codebases.
 
 It builds on top of the modern and modular but unopinionated state-management library, `zustand`, adding a layer of some opinionated conventions.
 
 These conventions allow consumers to get more out-of-the-box, reducing the need for boilerplate code and its maintenance in common scenarios.
 
-While `ergo` itself is agnostic to your framework of chice, for react-consumers, we suggest you consider using `ergo-react` which builds on this package and adds React-specific generated hooks.
+While `ergo-state` itself is agnostic to your framework of chice, for react-consumers, we suggest you consider using `ergo-react` which builds on this package and adds React-specific generated hooks.
 
 Ergo helps store authors express the intended public API for a store: which values can be read, which mutations can be called, which lifecycle APIs are available.
 It also helps clarify which details should stay inside the store module.
@@ -50,15 +50,15 @@ Actions can themselves make use of selector-derived functionality.
 Install Ergo together with Zustand:
 
 ```sh
-pnpm add ergo zustand
+pnpm add ergo-state zustand
 ```
 
-`zustand` is a required peer dependency because Ergo creates and wraps Zustand stores. The base `ergo` package does not load React. React consumers should use `ergo-react`.
+`zustand` is a required peer dependency because Ergo creates and wraps Zustand stores. The base `ergo-state` package does not load React. React consumers should use `ergo-react`.
 
 ## Quick Start
 
 ```ts
-import { createErgoStore } from 'ergo';
+import { createErgoStore } from 'ergo-state';
 
 interface TaskListState {
   activeTaskId: string | null;
@@ -126,7 +126,7 @@ taskListStoreApi.actions.completeTask('task-1');
 The root package entry generates hookless getters and subscribers:
 
 ```ts
-import { createErgoStore } from 'ergo';
+import { createErgoStore } from 'ergo-state';
 
 const counterStoreApi = createErgoStore<{ count: number }>()
   .withInitialState(() => ({

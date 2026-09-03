@@ -27,7 +27,7 @@ import { rmSync } from "node:fs";
 import path from "node:path";
 
 // Paths (relative to repo root, forward slashes) to never delete.
-const PRESERVE = ["tmp"];
+const PRESERVE = ["tmp", ".claude"];
 
 const args = process.argv.slice(2);
 const dryRun = args.includes("--dry-run") || args.includes("-n");

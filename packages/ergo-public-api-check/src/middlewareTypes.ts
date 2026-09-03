@@ -5,7 +5,7 @@ import { immer } from 'zustand/middleware/immer';
 import { createErgoStore } from 'ergo-react';
 
 // This package is intentionally compile-only. It imports Ergo the same way an app package does, so
-// tsc checks the generated public types instead of only checking source files inside packages/ergo.
+// tsc checks the generated public types instead of only checking source files inside packages/ergo-state.
 interface CounterState {
   label: string;
   nested: {

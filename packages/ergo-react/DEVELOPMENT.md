@@ -1,6 +1,6 @@
 # Ergo React Development
 
-These notes are for developers changing `ergo-react`. The main Ergo behavior is owned by `ergo`; this package should stay focused on React-specific generated hooks and React consumer documentation.
+These notes are for developers changing `ergo-react`. The main Ergo behavior is owned by `ergo-state`; this package should stay focused on React-specific generated hooks and React consumer documentation.
 
 ## Module Layout
 
@@ -10,7 +10,7 @@ These notes are for developers changing `ergo-react`. The main Ergo behavior is 
 - `index.ts` re-exports the public React package surface.
 - `docs/react-consumers.md` contains React hook export and consumption guidance.
 
-The package depends on `ergo` for the staged builder, vanilla-safe store assembly, selector helpers, and shared types. Import those through `ergo/adapter-internal`; do not reach into `ergo/src`.
+The package depends on `ergo-state` for the staged builder, vanilla-safe store assembly, selector helpers, and shared types. Import those through `ergo-state/adapter-internal`; do not reach into `ergo-state/src`.
 
 ## Dependency Notes
 

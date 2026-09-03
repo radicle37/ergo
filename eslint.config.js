@@ -77,8 +77,8 @@ const config = tseslint.config(
     }
   },
   {
-    files: ['packages/ergo/src/**/*.{ts,tsx,mts}'],
-    ignores: ['packages/ergo/src/**/*.test.ts'],
+    files: ['packages/ergo-state/src/**/*.{ts,tsx,mts}'],
+    ignores: ['packages/ergo-state/src/**/*.test.ts'],
     rules: {
       'no-restricted-imports': [
         'error',
@@ -86,19 +86,19 @@ const config = tseslint.config(
           paths: [
             {
               name: 'react',
-              message: 'The core ergo package must remain React-free. Use ergo-react instead.'
+              message: 'The core ergo-state package must remain React-free. Use ergo-react instead.'
             },
             {
               name: 'react-dom',
-              message: 'The core ergo package must remain React-free. Use ergo-react instead.'
+              message: 'The core ergo-state package must remain React-free. Use ergo-react instead.'
             },
             {
               name: 'use-sync-external-store',
-              message: 'The core ergo package must remain React-free. Use ergo-react instead.'
+              message: 'The core ergo-state package must remain React-free. Use ergo-react instead.'
             },
             {
               name: 'zustand',
-              message: 'Use zustand/vanilla from the core ergo package.'
+              message: 'Use zustand/vanilla from the core ergo-state package.'
             },
             {
               name: 'zustand/react',
@@ -112,7 +112,7 @@ const config = tseslint.config(
           patterns: [
             {
               group: ['react/*', 'react-dom/*', 'use-sync-external-store/*'],
-              message: 'The core ergo package must remain React-free. Use ergo-react instead.'
+              message: 'The core ergo-state package must remain React-free. Use ergo-react instead.'
             }
           ]
         }

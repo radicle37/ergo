@@ -56,6 +56,7 @@ vite.config.ts.timestamp-*
 
 # Other Directories
 .turbo/
+.claude/
 tmp/
 
 # Other Files
