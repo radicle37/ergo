@@ -1,3 +1,4 @@
+import { ErgoStoreSelectorMapMarker } from 'ergo-state';
 import type {
   ErgoStoreActionsInitializer,
   ErgoStoreActionsInitializerApi,
@@ -8,7 +9,8 @@ import type {
   ErgoStoreMiddlewareApi,
   ErgoStoreMutators,
   ErgoStoreSelectorDefinition,
-  ErgoStoreSelectorInput
+  ErgoStoreSelectorInput,
+  ErgoStoreSelectorMapOf
 } from 'ergo-state';
 import type * as RootErgo from 'ergo-state';
 import type {
@@ -63,6 +65,19 @@ const publicReactTypes = null as PublicReactTypes | null;
 
 void publicRootTypes;
 void publicReactTypes;
+
+// Confirms the phantom-marker escape hatch is reachable and resolves to the store's actual
+// resolved selector map (keys and value types) — this reachability is intentional, in contrast
+// with `HiddenRootSelectorMap` just below, which confirms the internal composition type itself
+// stays unreachable by name. Only the resolved shape is exposed, not the machinery that built it.
+const publicSelectorMapMarker = ErgoStoreSelectorMapMarker;
+void publicSelectorMapMarker;
+
+type PublicResolvedSelectorMap = ErgoStoreSelectorMapOf<
+  ErgoStoreApi<PublicState, PublicSelectorMap, PublicActions>
+>;
+const publicResolvedSelectorMap = null as PublicResolvedSelectorMap | null;
+void (publicResolvedSelectorMap satisfies PublicSelectorMap | null);
 
 // @ts-expect-error mode helpers are internal implementation details
 type HiddenRootBindingMode = RootErgo.ErgoStoreBindingMode;

@@ -96,12 +96,33 @@ export type StoreSubscriberMap<SelectorMap extends Record<string, (state: any) =
 export type StoreInternalGetterMap<SelectorMap extends Record<string, (state: any) => unknown>> = Readonly<{
     [SelectorKey in keyof SelectorMap as ErgoStoreInternalApiMethodName<'get', SelectorKey>]: () => ReturnType<SelectorMap[SelectorKey]>;
 }>;
+/**
+ * Phantom marker letting external code `infer` a store's resolved `SelectorMap` back out of an
+ * `ErgoStoreApi` value (see `ErgoStoreSelectorMapOf`). `StoreGetterMap`/`StoreSubscriberMap`
+ * key-remap `SelectorMap`'s keys (`itemCount` -> `getItemCount`), and TypeScript cannot `infer`
+ * a type parameter back out through a key-remapped mapped type
+ * (https://github.com/microsoft/TypeScript/issues/40619) — this field is a plain, non-remapped
+ * property, so it sidesteps that limitation entirely. Keyed on a real, exported `unique symbol`
+ * rather than a plain string so it never occupies a name in `ErgoStoreApi`'s string-keyed
+ * namespace and isn't reachable via dot notation; the field itself is never populated on any
+ * actual store.
+ */
+export declare const ErgoStoreSelectorMapMarker: unique symbol;
 export type ErgoStoreApi<State, SelectorMap extends Record<string, (state: State) => unknown>, Actions, Mutators extends ErgoStoreMutators = EmptyErgoStoreMutators> = Readonly<{
     readonly actions: Actions;
     readonly middleware: ErgoStoreMiddlewareApi<State, Mutators>;
     readonly get: Mutate<StoreApi<State>, Mutators>['getState'];
     readonly set: Mutate<StoreApi<State>, Mutators>['setState'];
+    readonly [ErgoStoreSelectorMapMarker]?: SelectorMap;
 }> & StoreGetterMap<SelectorMap> & StoreSubscriberMap<SelectorMap>;
+/**
+ * Extracts a store's resolved `SelectorMap` back out of its `ErgoStoreApi` type, through the
+ * phantom `ErgoStoreSelectorMapMarker` field. Resolves to `never` for anything that isn't an
+ * `ErgoStoreApi`.
+ */
+export type ErgoStoreSelectorMapOf<StoreApi> = StoreApi extends {
+    readonly [ErgoStoreSelectorMapMarker]?: infer SelectorMap;
+} ? SelectorMap : never;
 export type ErgoVanillaStoreApi<State, SelectorMap extends Record<string, (state: State) => unknown>, Actions, Mutators extends ErgoStoreMutators = EmptyErgoStoreMutators> = ErgoStoreApi<State, SelectorMap, Actions, Mutators>;
 type UseHookMap<SelectorMap extends Record<string, (state: any) => unknown>> = Readonly<{
     [SelectorKey in keyof SelectorMap as ErgoStoreApiMethodName<'use', SelectorKey>]: () => ReturnType<SelectorMap[SelectorKey]>;

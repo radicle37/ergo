@@ -1,5 +1,6 @@
 // Public type surface for package entrypoints. Keep implementation-only helpers in
 // internalTypes.ts unless store authors need to import them directly.
+export { ErgoStoreSelectorMapMarker } from './internalTypes.js';
 export type {
   ErgoStoreActionsInitializer,
   ErgoStoreActionsInitializerApi,
@@ -11,6 +12,7 @@ export type {
   ErgoStoreMutators,
   ErgoStoreSelectorDefinition,
   ErgoStoreSelectorInput,
+  ErgoStoreSelectorMapOf,
   ErgoVanillaStoreActionsInitializer,
   ErgoVanillaStoreActionsInitializerApi,
   ErgoVanillaStoreApi

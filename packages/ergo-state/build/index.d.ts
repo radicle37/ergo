@@ -1,5 +1,6 @@
 export { createErgoStore } from './createErgoVanillaStore.js';
 export { defineErgoStoreSelector } from './selectorDefinitions.js';
 export { subscribeWithEqualityFn } from './subscribeWithEqualityFn.js';
-export type { ErgoStoreEqualityFn, ErgoStoreInitialStateGetter, ErgoStoreMiddleware, ErgoStoreMiddlewareApi, ErgoStoreMutators, ErgoStoreApi, ErgoStoreActionsInitializer, ErgoStoreActionsInitializerApi, ErgoStoreSelectorDefinition, ErgoStoreSelectorInput, ErgoVanillaStoreActionsInitializer, ErgoVanillaStoreActionsInitializerApi, ErgoVanillaStoreApi } from './types.js';
+export { ErgoStoreSelectorMapMarker } from './types.js';
+export type { ErgoStoreEqualityFn, ErgoStoreInitialStateGetter, ErgoStoreMiddleware, ErgoStoreMiddlewareApi, ErgoStoreMutators, ErgoStoreApi, ErgoStoreActionsInitializer, ErgoStoreActionsInitializerApi, ErgoStoreSelectorDefinition, ErgoStoreSelectorInput, ErgoStoreSelectorMapOf, ErgoVanillaStoreActionsInitializer, ErgoVanillaStoreActionsInitializerApi, ErgoVanillaStoreApi } from './types.js';
 //# sourceMappingURL=index.d.ts.map
