@@ -1,7 +1,12 @@
 import type { Mutate, StoreApi } from 'zustand/vanilla';
 import { immer } from 'zustand/middleware/immer';
 
-import { createErgoStore, defineErgoStoreSelector } from 'ergo-state';
+import {
+  createErgoStore,
+  createErgoStoreSelectorSource,
+  defineErgoStoreSelector
+} from 'ergo-state';
+import type { ErgoStoreSelectorSource } from 'ergo-state';
 
 interface CounterState {
   label: string;
@@ -44,6 +49,12 @@ const unsubscribe = vanillaStore.subscribeCount(selectedCount => {
 });
 
 unsubscribe();
+
+// Confirms createErgoStoreSelectorSource and ErgoStoreSelectorSource are reachable from the
+// package entry and resolve to the expected { get, subscribe } shape for a known selector key.
+const itemCountSource = createErgoStoreSelectorSource(vanillaStore, 'itemCount');
+
+void (itemCountSource satisfies ErgoStoreSelectorSource<number>);
 
 const assertNoVanillaStoreHook = () => {
   // @ts-expect-error vanilla stores do not expose generated React hooks

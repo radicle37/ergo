@@ -2,6 +2,8 @@ import type { Mutate, StoreApi } from 'zustand';
 import { devtools, persist } from 'zustand/middleware';
 import { immer } from 'zustand/middleware/immer';
 
+import { createErgoStoreSelectorSource } from 'ergo-state';
+import type { ErgoStoreSelectorSource } from 'ergo-state';
 import { createErgoStore } from 'ergo-react';
 
 // This package is intentionally compile-only. It imports Ergo the same way an app package does, so
@@ -31,6 +33,12 @@ const inferredStore = createErgoStore()
 
 const inferredCount: number = inferredStore.getCount();
 void inferredCount;
+
+// Confirms createErgoStoreSelectorSource works against ErgoReactStoreApi, not just the vanilla
+// root's ErgoStoreApi.
+const inferredCountSource = createErgoStoreSelectorSource(inferredStore, 'count');
+
+void (inferredCountSource satisfies ErgoStoreSelectorSource<number>);
 
 const immerStore = createErgoStore<CounterState, CounterActions>()
   .withMiddleware(immer)

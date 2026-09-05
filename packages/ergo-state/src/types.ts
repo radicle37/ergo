@@ -17,3 +17,4 @@ export type {
   ErgoVanillaStoreActionsInitializerApi,
   ErgoVanillaStoreApi
 } from './internalTypes.js';
+export type { ErgoStoreSelectorSource } from './selectorSource.js';
