@@ -1,5 +1,12 @@
 # ergo-react
 
+## 0.1.3
+
+### Patch Changes
+
+- Updated dependencies [ad74517]
+  - ergo-state@0.2.0
+
 ## 0.1.2
 
 ### Patch Changes
