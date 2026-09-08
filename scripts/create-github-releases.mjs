@@ -49,5 +49,14 @@ for (const { name, version } of published) {
   ];
 
   console.log(`Creating GitHub release for ${tag}`);
-  execFileSync("gh", args, { stdio: "inherit" });
+  try {
+    execFileSync("gh", args, { stdio: ["ignore", "inherit", "pipe"] });
+  } catch (error) {
+    const stderr = error.stderr?.toString() ?? "";
+    process.stderr.write(stderr);
+    // A prior attempt (or a retried request that actually succeeded server-side)
+    // can leave the release already created; treat that as a no-op, not a failure.
+    if (!/already exists/i.test(stderr)) throw error;
+    console.log(`Release ${tag} already exists; skipping.`);
+  }
 }
