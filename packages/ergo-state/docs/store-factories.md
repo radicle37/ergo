@@ -1,10 +1,10 @@
-# Store Factories
+# Store factories
 
 [Back to README](../README.md)
 
-Most app stores can be exported as a singleton from their store module.
+Most app stores only need one instance, so they're created once and exported directly from their store module — a single shared instance like this is sometimes called a "singleton."
 
-However, it can be useful to use a store factory when the same state model needs more than one independent store instance.
+However, it can be useful to use a store factory — a function that creates a new, independent store each time you call it — when the same state model needs more than one instance running at once.
 
 Common cases:
 
@@ -13,7 +13,7 @@ Common cases:
 - A parent object owns the lifecycle of a store and should create or discard it with that object.
 - Middleware configuration varies by instance, such as a `persist` storage key or `devtools` name.
 
-## Factory Shape
+## Factory shape
 
 Put the full `createErgoStore` chain inside a function. Each call creates a new underlying store, new generated subscribers, and a new `actions` object.
 
@@ -61,7 +61,7 @@ export type CounterStoreApi = ReturnType<typeof createCounterStore>;
 
 Keep initial state creation inside a function so each store instance receives fresh state. This matters when state contains arrays, objects, maps, sets, or other mutable references.
 
-## Singleton From The Same Factory
+## Singleton from the same factory
 
 When app code only needs one instance, create and export a singleton from the same factory:
 
@@ -77,7 +77,7 @@ export const {
 
 This keeps normal app imports ergonomic while still giving tests and repeated feature instances a factory for isolated stores.
 
-## Parallel Tests
+## Parallel tests
 
 Imported singleton stores share state inside a test worker. Resetting a singleton in `beforeEach` is fine for simple sequential tests, but a factory is safer when tests run in parallel or when each test needs a custom starting point.
 
@@ -111,7 +111,7 @@ describe('counter store', () => {
 
 The important part is that the test imports `createCounterStore`, not the module-level `counterStoreApi` singleton. Each test gets its own independent state, actions, and subscribers.
 
-## Multiple Runtime Instances
+## Multiple runtime instances
 
 Factories are also useful for repeated runtime surfaces:
 
@@ -135,7 +135,7 @@ rightPanelStore.getCount(); // 0
 
 Generated subscribers are bound to the store instance that created them. For repeated instances, keep the store API tied to the owning feature instance so consumers do not accidentally read from the wrong instance. React-specific factory guidance lives in `ergo-react`.
 
-## Middleware In Factories
+## Middleware in factories
 
 Middleware options belong inside the factory too. If middleware uses external identity, make that identity part of the factory options so separate instances do not collide.
 
@@ -181,7 +181,8 @@ The same rule applies to `devtools` names, storage adapters, hydration behavior,
 - Do not share mutable initial state objects between instances. Return fresh state from the initial-state function.
 - Do not import a module-level singleton in tests that need isolated or parallel store state. Import the factory instead.
 
-## Related Pages
+## Related pages
 
-- [Getting Started](./getting-started.md)
-- [State Surface](./state-surface.md)
+- [Getting started](./getting-started.md)
+- [State surface](./state-surface.md)
+- [Store boundaries](./store-boundaries.md)

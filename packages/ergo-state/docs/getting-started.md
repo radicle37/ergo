@@ -1,10 +1,10 @@
-# Getting Started
+# Getting started
 
 [Back to README](../README.md)
 
-Ergo creates a store internally and returns a typed facade. That facade is the store's intended public API: it tells consumers which values to read, which actions to call, and which infrastructure APIs are available without exposing the raw store.
+Ergo creates a store internally and returns a typed object that serves as the store's public API: it tells consumers which values to read, which actions to call, and which extra APIs (like middleware) are available, without exposing the raw store underneath.
 
-## Store Shape
+## Store shape
 
 ```ts
 import { createErgoStore } from 'ergo-state';
@@ -37,9 +37,9 @@ The returned API includes:
 - `actions` for store mutations.
 - Generated selector methods such as `getCount()` and `subscribeCount(...)`.
 
-Store modules can then re-export the subset that each consumer layer should use. Services might import getters, subscribers, and actions; tests can import the full facade when they need setup or assertions. React applications can use `ergo-react` when they also need generated hooks.
+Store modules can then re-export the subset that each consumer layer should use. Services might import getters, subscribers, and actions; tests can import the full store API when they need setup or assertions. React applications can use `ergo-react` when they also need generated hooks.
 
-## Builder Stages
+## Builder stages
 
 Every store makes the same setup choices in the same order:
 
@@ -54,7 +54,7 @@ createErgoStore<State, Actions>()
 
 This keeps store setup predictable. The builder guides authors through the intended order, and TypeScript uses each step to narrow what can happen next. By the time the store is finished, the generated getters, subscribers, actions, and middleware APIs all reflect the choices made earlier in the chain.
 
-## State-Only Stores
+## State-only stores
 
 Use `.withoutActions()` when a store only needs state and selectors:
 
@@ -67,7 +67,7 @@ export const panelStoreApi = createErgoStore<{ isOpen: boolean }>()
   .withoutActions();
 ```
 
-## Inferred State
+## Inferred state
 
 Stores without middleware can let TypeScript infer state from `withInitialState`:
 
@@ -84,8 +84,8 @@ store.getLabel();
 
 Stores with middleware should pass an explicit state type before calling `withMiddleware`. Middleware can change the type of `set`, `get`, or the store object, and TypeScript needs the state shape before it can understand those changes.
 
-## Related Pages
+## Related pages
 
-- [Selectors And Actions](./selectors-and-actions.md)
-- [Store Factories](./store-factories.md)
-- [Zustand And Middleware](./zustand-and-middleware.md)
+- [Selectors and actions](./selectors-and-actions.md)
+- [Store factories](./store-factories.md)
+- [Zustand and middleware](./zustand-and-middleware.md)

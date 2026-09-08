@@ -24,9 +24,9 @@ The equality function is part of the selector definition. Ergo passes it to gene
 
 `ergo-react` also uses the same selector equality function for its generated React hooks.
 
-That matters for derived values that are cheap to read but expensive or noisy to react to. The selector can return the most convenient value shape, while the equality function defines what "meaningfully changed" means for subscribers.
+That matters for values that are cheap to compute but expensive — or just very frequent — to react to. The selector can return whatever value shape is most convenient, while the equality function defines what "actually changed" means for subscribers.
 
-## Common Equality Functions
+## Common equality functions
 
 `Object.is` is the usual choice for primitive selected values and stable object references. It is fast, explicit, and matches the common "same value or same reference" expectation.
 
@@ -63,7 +63,7 @@ const store = createErgoStore<{ count: number; label: string }>()
   .withoutActions();
 ```
 
-Deep equality functions, such as Lodash `isEqual` or Ramda `equals`, can be useful when a selector returns nested data and reference changes are common even though the semantic value is unchanged. Treat them as a cost model decision rather than a blanket anti-pattern. Deep equality is often a good tradeoff when the selected data is bounded, updates are frequent, and skipped work is expensive or noisy. It is a weaker tradeoff when the selected data can grow without a clear limit, changes are rare, or the avoided work is cheap.
+Deep equality functions, such as Lodash `isEqual` or Ramda `equals`, can be useful when a selector returns nested data — like a filters object with arrays inside it — that often comes back as a brand-new object even when nothing inside it actually changed. Reaching for deep equality isn't a bad practice to avoid; it's a tradeoff to weigh for each case. It tends to be worth it when the selected data has a known, reasonably small size, updates happen often, and skipping unnecessary work (like a re-render or an expensive callback) actually saves something real. It's a weaker fit when the selected data can grow without any limit, changes are rare, or the work you'd be skipping was cheap to begin with.
 
 ```ts
 import isEqual from 'lodash/isEqual';
@@ -95,7 +95,7 @@ const store = createErgoStore<SearchState>()
   .withoutActions();
 ```
 
-Small domain-specific equality functions are often better than generic deep equality. They document what the consumer actually cares about and avoid walking irrelevant parts of a selected value.
+Small, purpose-built equality functions are often better than generic deep equality. They make it obvious what actually matters for that selector, and they skip checking the parts of the value nobody cares about.
 
 ```ts
 const sameOrderedIds = (left: readonly string[], right: readonly string[]) =>
@@ -113,18 +113,18 @@ const store = createErgoStore<{ selectedIds: string[] }>()
   .withoutActions();
 ```
 
-## When Custom Equality Functions Make Sense
+## When custom equality functions make sense
 
-Prefer the default behavior for primitives, stable object references, and selectors that return state fields directly. A custom equality function is extra logic, so it should describe a real semantic boundary.
+Prefer the default behavior for primitives and selectors that return a state field directly. A custom equality function is extra code to write and maintain, so only reach for one when there's a real reason two different-looking values should count as "the same" for that selector's subscribers.
 
 Custom equality functions are useful when:
 
-- A selector returns a new array or object on each run, but many of those new references represent the same meaningful value.
-- Consumers only care about part of a derived object, such as an ID, status, count, or dimensions.
-- A subscriber triggers expensive work and should only run for meaningful changes.
+- A selector returns a new array or object every time it runs, but a lot of those "new" values represent the same result underneath.
+- Consumers only care about part of a derived object — an ID, a status, a count, a set of dimensions — not the whole thing.
+- A subscriber triggers expensive work and should only run when something meaningful actually changed.
 
-Choose the equality function that matches the selector's meaning. `Object.is`, `shallow`, and deep equality helpers all short-circuit common unequal cases quickly, so the usual concern is not that custom equality is inherently expensive. The important questions are whether the comparator reflects the consumer's notion of "same enough", whether the selected value has predictable structure, and whether a more specific domain comparator would make that intent clearer. Equality functions should be deterministic and should not mutate their inputs.
+Pick the equality function based on what "the same" should mean for that selector, not based on performance — `Object.is`, `shallow`, and the deep-equality helpers above all bail out quickly on the common cases, so a custom function is rarely the expensive part. Worth asking instead: does this comparison match what "unchanged" should mean here, is the selected value's shape predictable enough to compare with confidence, and would a small, hand-written comparison make that intent clearer than a generic one? Whatever function you use, make sure it always gives the same answer for the same inputs, and never modifies the values it's comparing.
 
-## Related Pages
+## Related pages
 
-- [Selectors And Actions](./selectors-and-actions.md)
+- [Selectors and actions](./selectors-and-actions.md)
