@@ -71,7 +71,9 @@ export const { getCount, subscribeCount, useCount } = counterStoreApi; // The "u
 
 ## Main documentation
 
-The core builder, selector, action, state-surface, equality, middleware, and factory behavior is documented in `ergo`. Start with the base Ergo README for those concepts, then use the React-specific guide here for hook export patterns.
+The core builder, selector, action, state-surface, equality, middleware, and factory behavior is documented in [`ergo-state`](../ergo-state/README.md). Start there for those concepts, then use the React-specific guide here for hook export patterns.
+
+For libraries that export inferred store factories, `ErgoReactStoreApi` and `ErgoReactStoreSelectorMap` are public types. TypeScript declaration emit names these through `ergo-react`; consumers do not need to depend on `ergo-state` internals.
 
 ## Guide
 

@@ -1,5 +1,7 @@
 # Ergo Monorepo
 
+Most users should start with the [`ergo-state` README](./packages/ergo-state/README.md), which documents the core store API, selectors, actions, and middleware. React users can then continue to the [`ergo-react` README](./packages/ergo-react/README.md).
+
 This repository contains the Ergo packages: a small TypeScript state-management layer built on top of Zustand, plus the React adapter and public API type checks.
 
 The package READMEs are the source of truth for consumer-facing usage. This root README is only a map of the workspace and the common repo-level commands.
@@ -11,6 +13,7 @@ The package READMEs are the source of truth for consumer-facing usage. This root
 | `ergo-state` | Framework-agnostic store builder and generated getters/subscribers/actions around Zustand. | [README](./packages/ergo-state/README.md), [development notes](./packages/ergo-state/DEVELOPMENT.md) |
 | `ergo-react` | React adapter for `ergo-state`, adding generated `use<Name>()` hooks for selector-driven render paths. | [README](./packages/ergo-react/README.md), [development notes](./packages/ergo-react/DEVELOPMENT.md) |
 | `ergo-public-api-check` | Compile-only checks confirming that `ergo-state` and `ergo-react` still expose correct types once another package imports them. | [README](./packages/ergo-public-api-check/README.md) |
+| `ergo-react-declaration-check` | TypeScript 7 fixture confirming inferred React store factories emit portable declarations. | [README](./packages/ergo-react-declaration-check/README.md) |
 
 ## Documentation Map
 
@@ -65,6 +68,7 @@ Useful package-scoped examples:
 pnpm --filter ergo-state test
 pnpm --filter ergo-react test
 pnpm --filter ergo-public-api-check typecheck
+pnpm --filter ergo-react-declaration-check build
 ```
 
 ## Workspace Notes

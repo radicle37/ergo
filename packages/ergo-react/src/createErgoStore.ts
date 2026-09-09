@@ -25,7 +25,8 @@ export type {
 export type {
   ErgoReactStoreActionsInitializer,
   ErgoReactStoreActionsInitializerApi,
-  ErgoReactStoreApi
+  ErgoReactStoreApi,
+  ErgoReactStoreSelectorMap
 } from './reactTypes.js';
 
 /**

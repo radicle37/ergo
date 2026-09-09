@@ -6,6 +6,7 @@ These notes are for developers changing `ergo-react`. The main Ergo behavior is 
 
 - `createErgoStore.ts` keeps the React builder entry point and public React-capable type exports.
 - `createErgoStoreFromOptions.ts` adds generated React hooks to the shared Ergo store API.
+- `reactTypes.ts` owns the public React builder and facade types used by declaration emit.
 - `createStoreHook.ts` contains the React hook adapter around `zustand/traditional`.
 - `index.ts` re-exports the public React package surface.
 - `docs/react-consumers.md` contains React hook export and consumption guidance.
@@ -20,4 +21,4 @@ React should remain a peer instead of a normal dependency so consumers use their
 
 ## Testing
 
-Keep React runtime behavior tests in this package. Keep package-boundary declaration checks in `packages/ergo-public-api-check` when the question is "does another package see the exported type correctly?"
+Keep React runtime behavior tests in this package. Use `packages/ergo-public-api-check` for ordinary package-boundary type checks and `packages/ergo-react-declaration-check` for TypeScript 7 declaration-emit regressions.

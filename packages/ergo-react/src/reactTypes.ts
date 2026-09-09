@@ -1,25 +1,74 @@
 import type {
   EmptyErgoStoreMutators,
-  ErgoStoreActionChoiceBuilder,
-  ErgoStoreActionChoiceBuilderWithActions,
   ErgoStoreActionsInitializerApiForMode,
   ErgoStoreActionsInitializerForMode,
   ErgoStoreApiForMode,
-  ErgoStoreAutoselectorChoiceBuilder,
-  ErgoStoreAutoselectorChoiceBuilderWithActions,
   ErgoStoreAutoselectorKeys,
-  ErgoStoreInitialBuilder,
-  ErgoStoreInitialBuilderWithActions,
-  ErgoStoreInitialBuilderWithActionsAndMiddleware,
-  ErgoStoreInitialBuilderWithMiddleware,
+  ErgoStoreInitialStateGetter,
+  ErgoStoreMiddleware,
   ErgoStoreMutators,
-  ErgoStoreSelectorChoiceBuilder,
-  ErgoStoreSelectorChoiceBuilderWithActions,
+  ErgoStoreSelectorChoiceResult,
+  ErgoStoreSelectorInput,
+  ErgoStoreSelectorMap,
   ErgoStoreSelectorRecord,
-  ErgoStoreStateInferredInitialBuilder,
   InferredErgoStoreActionsInitializerForMode
 } from 'ergo-state/adapter-internal';
 
+type EmptyErgoReactStoreActions = Record<never, never>;
+type EmptyErgoReactStoreAutoselectors = readonly [];
+
+type ErgoReactStoreSelectorArgument<State, Selectors> = Readonly<{
+  [SelectorKey in keyof Selectors]: ErgoStoreSelectorInput<State, any>;
+}>;
+
+type ErgoReactStoreSelectorChoiceResult<
+  State extends object,
+  NextSelectors extends ErgoStoreSelectorRecord<State>,
+  AutoselectorKeys extends ErgoStoreAutoselectorKeys<State>,
+  Mutators extends ErgoStoreMutators
+> =
+  ErgoStoreSelectorChoiceResult<
+    State,
+    NextSelectors,
+    AutoselectorKeys,
+    Mutators,
+    'react'
+  > extends never
+    ? never
+    : ErgoReactStoreActionChoiceBuilder<State, NextSelectors, AutoselectorKeys, Mutators>;
+
+type ErgoReactStoreSelectorChoiceWithActionsResult<
+  State extends object,
+  Actions extends object,
+  NextSelectors extends ErgoStoreSelectorRecord<State>,
+  AutoselectorKeys extends ErgoStoreAutoselectorKeys<State>,
+  Mutators extends ErgoStoreMutators
+> =
+  ErgoStoreSelectorChoiceResult<
+    State,
+    NextSelectors,
+    AutoselectorKeys,
+    Mutators,
+    'react'
+  > extends never
+    ? never
+    : ErgoReactStoreActionChoiceBuilderWithActions<
+        State,
+        Actions,
+        NextSelectors,
+        AutoselectorKeys,
+        Mutators
+      >;
+
+export type ErgoReactStoreSelectorMap<
+  State extends object,
+  Selectors extends ErgoStoreSelectorRecord<State>,
+  AutoselectorKeys extends ErgoStoreAutoselectorKeys<State>
+> = ErgoStoreSelectorMap<State, Selectors, AutoselectorKeys>;
+
+// Keep the facade and every builder stage owned by ergo-react. Aliasing the state builders here
+// makes declaration emit follow their terminal return types into ergo-state/adapter-internal,
+// which is not a portable dependency path for consumers that only install ergo-react.
 export type ErgoReactStoreApi<
   State,
   SelectorMap extends Record<string, (state: State) => unknown>,
@@ -65,97 +114,229 @@ export type InferredErgoReactStoreActionsInitializer<
   Mutators
 >;
 
-export type ErgoReactStoreInitialBuilder<State extends object> = ErgoStoreInitialBuilder<
-  State,
-  'react'
->;
+export interface ErgoReactStoreInitialBuilder<State extends object> {
+  readonly withMiddleware: <
+    MiddlewareInputMutators extends ErgoStoreMutators,
+    MiddlewareOutputMutators extends ErgoStoreMutators
+  >(
+    middleware: ErgoStoreMiddleware<State, MiddlewareInputMutators, MiddlewareOutputMutators>
+  ) => ErgoReactStoreInitialBuilderWithMiddleware<
+    State,
+    MiddlewareInputMutators,
+    MiddlewareOutputMutators
+  >;
+  readonly withInitialState: (
+    getInitialState: ErgoStoreInitialStateGetter<State>
+  ) => ErgoReactStoreAutoselectorChoiceBuilder<State>;
+}
 
-export type ErgoReactStoreInitialBuilderWithActions<
+export interface ErgoReactStoreInitialBuilderWithActions<
   State extends object,
   Actions extends object
-> = ErgoStoreInitialBuilderWithActions<State, Actions, 'react'>;
+> {
+  readonly withMiddleware: <
+    MiddlewareInputMutators extends ErgoStoreMutators,
+    MiddlewareOutputMutators extends ErgoStoreMutators
+  >(
+    middleware: ErgoStoreMiddleware<State, MiddlewareInputMutators, MiddlewareOutputMutators>
+  ) => ErgoReactStoreInitialBuilderWithActionsAndMiddleware<
+    State,
+    Actions,
+    MiddlewareInputMutators,
+    MiddlewareOutputMutators
+  >;
+  readonly withInitialState: (
+    getInitialState: ErgoStoreInitialStateGetter<State>
+  ) => ErgoReactStoreAutoselectorChoiceBuilderWithActions<State, Actions>;
+}
 
-export type ErgoReactStoreStateInferredInitialBuilder =
-  ErgoStoreStateInferredInitialBuilder<'react'>;
+export interface ErgoReactStoreStateInferredInitialBuilder {
+  readonly withInitialState: <State extends object>(
+    getInitialState: ErgoStoreInitialStateGetter<State>
+  ) => ErgoReactStoreAutoselectorChoiceBuilder<State>;
+}
 
 /** @lintignore internal builder-stage alias */
-export type ErgoReactStoreInitialBuilderWithMiddleware<
+export interface ErgoReactStoreInitialBuilderWithMiddleware<
   State extends object,
   InitializerMutators extends ErgoStoreMutators,
   StoreMutators extends ErgoStoreMutators
-> = ErgoStoreInitialBuilderWithMiddleware<State, InitializerMutators, StoreMutators, 'react'>;
+> {
+  readonly withInitialState: (
+    getInitialState: ErgoStoreInitialStateGetter<State, InitializerMutators>
+  ) => ErgoReactStoreAutoselectorChoiceBuilder<State, StoreMutators>;
+}
 
 /** @lintignore internal builder-stage alias */
-export type ErgoReactStoreInitialBuilderWithActionsAndMiddleware<
+export interface ErgoReactStoreInitialBuilderWithActionsAndMiddleware<
   State extends object,
   Actions extends object,
   InitializerMutators extends ErgoStoreMutators,
   StoreMutators extends ErgoStoreMutators
-> = ErgoStoreInitialBuilderWithActionsAndMiddleware<
-  State,
-  Actions,
-  InitializerMutators,
-  StoreMutators,
-  'react'
->;
+> {
+  readonly withInitialState: (
+    getInitialState: ErgoStoreInitialStateGetter<State, InitializerMutators>
+  ) => ErgoReactStoreAutoselectorChoiceBuilderWithActions<State, Actions, StoreMutators>;
+}
 
 /** @lintignore internal builder-stage alias */
-export type ErgoReactStoreAutoselectorChoiceBuilder<
+export interface ErgoReactStoreAutoselectorChoiceBuilder<
   State extends object,
   Mutators extends ErgoStoreMutators = EmptyErgoStoreMutators
-> = ErgoStoreAutoselectorChoiceBuilder<State, Mutators, 'react'>;
+> {
+  readonly withAutoselectors: <AutoselectorKeys extends ErgoStoreAutoselectorKeys<State>>(
+    autoselectors: AutoselectorKeys
+  ) => ErgoReactStoreSelectorChoiceBuilder<State, Record<never, never>, AutoselectorKeys, Mutators>;
+  readonly withoutAutoselectors: () => ErgoReactStoreSelectorChoiceBuilder<
+    State,
+    Record<never, never>,
+    EmptyErgoReactStoreAutoselectors,
+    Mutators
+  >;
+}
 
 /** @lintignore internal builder-stage alias */
-export type ErgoReactStoreAutoselectorChoiceBuilderWithActions<
-  State extends object,
-  Actions extends object,
-  Mutators extends ErgoStoreMutators = EmptyErgoStoreMutators
-> = ErgoStoreAutoselectorChoiceBuilderWithActions<State, Actions, Mutators, 'react'>;
-
-/** @lintignore internal builder-stage alias */
-export type ErgoReactStoreSelectorChoiceBuilder<
-  State extends object,
-  Selectors extends ErgoStoreSelectorRecord<State>,
-  AutoselectorKeys extends ErgoStoreAutoselectorKeys<State>,
-  Mutators extends ErgoStoreMutators = EmptyErgoStoreMutators
-> = ErgoStoreSelectorChoiceBuilder<State, Selectors, AutoselectorKeys, Mutators, 'react'>;
-
-/** @lintignore internal builder-stage alias */
-export type ErgoReactStoreSelectorChoiceBuilderWithActions<
+export interface ErgoReactStoreAutoselectorChoiceBuilderWithActions<
   State extends object,
   Actions extends object,
-  Selectors extends ErgoStoreSelectorRecord<State>,
-  AutoselectorKeys extends ErgoStoreAutoselectorKeys<State>,
   Mutators extends ErgoStoreMutators = EmptyErgoStoreMutators
-> = ErgoStoreSelectorChoiceBuilderWithActions<
-  State,
-  Actions,
-  Selectors,
-  AutoselectorKeys,
-  Mutators,
-  'react'
->;
+> {
+  readonly withAutoselectors: <AutoselectorKeys extends ErgoStoreAutoselectorKeys<State>>(
+    autoselectors: AutoselectorKeys
+  ) => ErgoReactStoreSelectorChoiceBuilderWithActions<
+    State,
+    Actions,
+    Record<never, never>,
+    AutoselectorKeys,
+    Mutators
+  >;
+  readonly withoutAutoselectors: () => ErgoReactStoreSelectorChoiceBuilderWithActions<
+    State,
+    Actions,
+    Record<never, never>,
+    EmptyErgoReactStoreAutoselectors,
+    Mutators
+  >;
+}
 
 /** @lintignore internal builder-stage alias */
-export type ErgoReactStoreActionChoiceBuilder<
+export interface ErgoReactStoreSelectorChoiceBuilder<
   State extends object,
   Selectors extends ErgoStoreSelectorRecord<State>,
   AutoselectorKeys extends ErgoStoreAutoselectorKeys<State>,
   Mutators extends ErgoStoreMutators = EmptyErgoStoreMutators
-> = ErgoStoreActionChoiceBuilder<State, Selectors, AutoselectorKeys, Mutators, 'react'>;
+> {
+  readonly withSelectors: <
+    const NextSelectors extends ErgoReactStoreSelectorArgument<State, NextSelectors>
+  >(
+    selectors: NextSelectors
+  ) => ErgoReactStoreSelectorChoiceResult<State, NextSelectors, AutoselectorKeys, Mutators>;
+  readonly withActions: <Actions extends object>(
+    createActions: InferredErgoReactStoreActionsInitializer<
+      State,
+      Actions,
+      Selectors,
+      AutoselectorKeys,
+      Mutators
+    >
+  ) => ErgoReactStoreApi<
+    State,
+    ErgoReactStoreSelectorMap<State, Selectors, AutoselectorKeys>,
+    Actions,
+    Mutators
+  >;
+  readonly withoutActions: () => ErgoReactStoreApi<
+    State,
+    ErgoReactStoreSelectorMap<State, Selectors, AutoselectorKeys>,
+    EmptyErgoReactStoreActions,
+    Mutators
+  >;
+}
 
 /** @lintignore internal builder-stage alias */
-export type ErgoReactStoreActionChoiceBuilderWithActions<
+export interface ErgoReactStoreSelectorChoiceBuilderWithActions<
   State extends object,
   Actions extends object,
   Selectors extends ErgoStoreSelectorRecord<State>,
   AutoselectorKeys extends ErgoStoreAutoselectorKeys<State>,
   Mutators extends ErgoStoreMutators = EmptyErgoStoreMutators
-> = ErgoStoreActionChoiceBuilderWithActions<
-  State,
-  Actions,
-  Selectors,
-  AutoselectorKeys,
-  Mutators,
-  'react'
->;
+> {
+  readonly withSelectors: <
+    const NextSelectors extends ErgoReactStoreSelectorArgument<State, NextSelectors>
+  >(
+    selectors: NextSelectors
+  ) => ErgoReactStoreSelectorChoiceWithActionsResult<
+    State,
+    Actions,
+    NextSelectors,
+    AutoselectorKeys,
+    Mutators
+  >;
+  readonly withActions: (
+    createActions: ErgoReactStoreActionsInitializer<
+      State,
+      Actions,
+      Selectors,
+      AutoselectorKeys,
+      Mutators
+    >
+  ) => ErgoReactStoreApi<
+    State,
+    ErgoReactStoreSelectorMap<State, Selectors, AutoselectorKeys>,
+    Actions,
+    Mutators
+  >;
+}
+
+/** @lintignore internal builder-stage alias */
+export interface ErgoReactStoreActionChoiceBuilder<
+  State extends object,
+  Selectors extends ErgoStoreSelectorRecord<State>,
+  AutoselectorKeys extends ErgoStoreAutoselectorKeys<State>,
+  Mutators extends ErgoStoreMutators = EmptyErgoStoreMutators
+> {
+  readonly withActions: <Actions extends object>(
+    createActions: InferredErgoReactStoreActionsInitializer<
+      State,
+      Actions,
+      Selectors,
+      AutoselectorKeys,
+      Mutators
+    >
+  ) => ErgoReactStoreApi<
+    State,
+    ErgoReactStoreSelectorMap<State, Selectors, AutoselectorKeys>,
+    Actions,
+    Mutators
+  >;
+  readonly withoutActions: () => ErgoReactStoreApi<
+    State,
+    ErgoReactStoreSelectorMap<State, Selectors, AutoselectorKeys>,
+    EmptyErgoReactStoreActions,
+    Mutators
+  >;
+}
+
+/** @lintignore internal builder-stage alias */
+export interface ErgoReactStoreActionChoiceBuilderWithActions<
+  State extends object,
+  Actions extends object,
+  Selectors extends ErgoStoreSelectorRecord<State>,
+  AutoselectorKeys extends ErgoStoreAutoselectorKeys<State>,
+  Mutators extends ErgoStoreMutators = EmptyErgoStoreMutators
+> {
+  readonly withActions: (
+    createActions: ErgoReactStoreActionsInitializer<
+      State,
+      Actions,
+      Selectors,
+      AutoselectorKeys,
+      Mutators
+    >
+  ) => ErgoReactStoreApi<
+    State,
+    ErgoReactStoreSelectorMap<State, Selectors, AutoselectorKeys>,
+    Actions,
+    Mutators
+  >;
+}

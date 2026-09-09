@@ -7,5 +7,5 @@
   "access": "public",
   "baseBranch": "main",
   "updateInternalDependencies": "patch",
-  "ignore": ["ergo-public-api-check"]
+  "ignore": ["ergo-public-api-check", "ergo-react-declaration-check"]
 }

@@ -16,6 +16,8 @@ Use this package for type cases that must cross the package boundary:
 
 Keep runtime behavior tests in `packages/ergo-state` and `packages/ergo-react`. This package should not use Vitest, React test helpers, mocks, or application-specific dependencies.
 
+Use `packages/ergo-react-declaration-check` instead when the regression specifically depends on emitting a downstream `.d.ts` with TypeScript 7.
+
 ## Dependencies
 
 This package declares the peer packages needed by the entries it checks in its own `dependencies` because it is meant to behave like a real consumer package. Do not rely on another workspace package, hoisting, or pnpm peer auto-install behavior to provide `react`, `use-sync-external-store`, or `zustand` here.
