@@ -1,5 +1,11 @@
 # ergo-react
 
+## 0.1.4
+
+### Patch Changes
+
+- 8e37c57: Make inferred store factory return types portable during TypeScript 7 declaration emit.
+
 ## 0.1.3
 
 ### Patch Changes
