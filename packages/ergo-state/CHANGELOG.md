@@ -1,5 +1,11 @@
 # ergo-state
 
+## 0.2.1
+
+### Patch Changes
+
+- 23e544e: Export `ErgoStoreSelectorMap` so inferred store factory return types remain portable during declaration emit.
+
 ## 0.2.0
 
 ### Minor Changes
