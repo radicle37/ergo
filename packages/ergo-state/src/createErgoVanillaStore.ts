@@ -4,11 +4,13 @@ import { createErgoVanillaStoreFromOptions } from './createErgoVanillaStoreFromO
 import type {
   ErgoStoreInitialStateGetter,
   ErgoStoreMiddleware,
-  ErgoStoreMutators,
+  ErgoStoreMutators
+} from './internalTypes.js';
+import type {
   ErgoVanillaStoreInitialBuilder,
   ErgoVanillaStoreInitialBuilderWithActions,
   ErgoVanillaStoreStateInferredInitialBuilder
-} from './internalTypes.js';
+} from './vanillaBuilderTypes.js';
 
 /**
  * Creates a small, typed facade around a vanilla Zustand store without generated React hooks.

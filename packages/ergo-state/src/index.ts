@@ -14,6 +14,7 @@ export type {
   ErgoStoreActionsInitializerApi,
   ErgoStoreSelectorDefinition,
   ErgoStoreSelectorInput,
+  ErgoStoreSelectorMap,
   ErgoStoreSelectorMapOf,
   ErgoStoreSelectorSource,
   ErgoVanillaStoreActionsInitializer,

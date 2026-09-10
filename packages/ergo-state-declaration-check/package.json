@@ -1,0 +1,16 @@
+{
+  "name": "ergo-state-declaration-check",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "tsc --build && node scripts/assert-declaration.mjs"
+  },
+  "dependencies": {
+    "ergo-state": "workspace:*",
+    "zustand": "^5.0.15"
+  },
+  "devDependencies": {
+    "@typescript/native": "npm:typescript@7.0.2"
+  }
+}

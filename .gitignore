@@ -59,6 +59,7 @@ vite.config.ts.timestamp-*
 .claude/
 tmp/
 packages/ergo-react-declaration-check/build/
+packages/ergo-state-declaration-check/build/
 
 # Other Files
 .DS_Store

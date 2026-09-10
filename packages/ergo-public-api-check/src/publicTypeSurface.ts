@@ -10,6 +10,7 @@ import type {
   ErgoStoreMutators,
   ErgoStoreSelectorDefinition,
   ErgoStoreSelectorInput,
+  ErgoStoreSelectorMap,
   ErgoStoreSelectorMapOf
 } from 'ergo-state';
 import type * as RootErgo from 'ergo-state';
@@ -47,7 +48,8 @@ type PublicRootTypes = [
   ErgoStoreMiddlewareApi<PublicState>,
   ErgoStoreMutators,
   ErgoStoreSelectorDefinition<PublicState, number>,
-  ErgoStoreSelectorInput<PublicState, number>
+  ErgoStoreSelectorInput<PublicState, number>,
+  ErgoStoreSelectorMap<PublicState, PublicSelectors, PublicAutoselectors>
 ];
 type PublicReactTypes = [
   ErgoReactStoreActionsInitializer<
@@ -93,15 +95,6 @@ void hiddenRootApiMethodName;
 type HiddenRootBuilder = RootErgo.ErgoStoreInitialBuilder<PublicState>;
 const hiddenRootBuilder = null as HiddenRootBuilder | null;
 void hiddenRootBuilder;
-
-// @ts-expect-error selector-map composition types are internal implementation details
-type HiddenRootSelectorMap = RootErgo.ErgoStoreSelectorMap<
-  PublicState,
-  PublicSelectors,
-  PublicAutoselectors
->;
-const hiddenRootSelectorMap = null as HiddenRootSelectorMap | null;
-void hiddenRootSelectorMap;
 
 // @ts-expect-error react builder-stage types are internal implementation details
 type HiddenReactBuilder = ReactErgo.ErgoStoreInitialBuilder<PublicState>;

@@ -16,7 +16,7 @@ Use this package for type cases that must cross the package boundary:
 
 Keep runtime behavior tests in `packages/ergo-state` and `packages/ergo-react`. This package should not use Vitest, React test helpers, mocks, or application-specific dependencies.
 
-Use `packages/ergo-react-declaration-check` instead when the regression specifically depends on emitting a downstream `.d.ts` with TypeScript 7.
+Use `packages/ergo-react-declaration-check` or `packages/ergo-state-declaration-check` instead when the regression specifically depends on emitting a downstream `.d.ts` with TypeScript 7.
 
 ## Dependencies
 

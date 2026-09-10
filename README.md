@@ -14,6 +14,7 @@ The package READMEs are the source of truth for consumer-facing usage. This root
 | `ergo-react` | React adapter for `ergo-state`, adding generated `use<Name>()` hooks for selector-driven render paths. | [README](./packages/ergo-react/README.md), [development notes](./packages/ergo-react/DEVELOPMENT.md) |
 | `ergo-public-api-check` | Compile-only checks confirming that `ergo-state` and `ergo-react` still expose correct types once another package imports them. | [README](./packages/ergo-public-api-check/README.md) |
 | `ergo-react-declaration-check` | TypeScript 7 fixture confirming inferred React store factories emit portable declarations. | [README](./packages/ergo-react-declaration-check/README.md) |
+| `ergo-state-declaration-check` | TypeScript 7 fixture confirming inferred vanilla store factories emit portable declarations. | [README](./packages/ergo-state-declaration-check/README.md) |
 
 ## Documentation Map
 

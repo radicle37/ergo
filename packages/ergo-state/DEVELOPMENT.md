@@ -28,7 +28,7 @@ packages/ergo-public-api-check
 
 That package is not application code. It exists only to run `tsc` against examples that import `ergo-state` and `ergo-react` the same way a real workspace package does. Use it for public API type checks, especially cases involving exported declarations, `package.json` exports, or middleware typing. Keep vanilla runtime behavior tests in `packages/ergo-state`; keep React runtime behavior tests in `packages/ergo-react`.
 
-Use `packages/ergo-public-api-check` when the question is "does another package see the exported type correctly?" Keep a focused source-level type check in `packages/ergo-state` when the question is about an internal helper, a staged builder type, or a regression that does not need a package-boundary import.
+Use `packages/ergo-public-api-check` when the question is "does another package see the exported type correctly?" Use `packages/ergo-state-declaration-check` when the regression specifically depends on emitting a downstream declaration with TypeScript 7. Keep a focused source-level type check in `packages/ergo-state` when the question is about an internal helper, a staged builder type, or a regression that does not need a package-boundary import.
 
 Run the public-API type checks directly with:
 
