@@ -22,12 +22,12 @@ jobs:
           fetch-depth: 0
 
       - name: Setup pnpm
-        uses: pnpm/action-setup@v4
+        uses: pnpm/action-setup@v6
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 24.20.0
+          node-version: 26.13.0
           registry-url: 'https://registry.npmjs.org'
 
       - name: Install dependencies

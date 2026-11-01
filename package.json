@@ -32,25 +32,22 @@
     "@changesets/cli": "^2.27.9",
     "@emnapi/core": "^1.11.3",
     "@emnapi/runtime": "^1.11.3",
-    "@types/node": "24.13.3",
+    "@types/node": "26.6.6",
     "@typescript/native": "npm:typescript@7.0.2",
-    "eslint": "^9.39.5",
+    "eslint": "^10.14.0",
     "eslint-config-prettier": "^10.1.8",
-    "eslint-plugin-prettier": "^5.5.6",
-    "globals": "^17.11.0",
-    "happy-dom": "20.12.0",
-    "knip": "^6.33.0",
-    "prettier": "^3.9.6",
-    "turbo": "^2.10.12",
+    "eslint-plugin-prettier": "^5.5.7",
+    "globals": "^17.13.0",
+    "happy-dom": "21.0.4",
+    "knip": "^6.44.1",
+    "prettier": "^3.9.10",
+    "turbo": "^2.11.10",
     "typescript": "npm:@typescript/typescript6@6.0.2",
-    "typescript-eslint": "^8.68.0"
+    "typescript-eslint": "^8.72.1"
   },
-  "optionalDependencies": {
-    "@rollup/rollup-linux-x64-gnu": "*"
-  },
-  "packageManager": "pnpm@11.25.0",
+  "packageManager": "pnpm@12.16.1",
   "engines": {
-    "node": "24.20.0",
-    "pnpm": "11.25.0"
+    "node": "26.13.0",
+    "pnpm": "12.16.1"
   }
 }
